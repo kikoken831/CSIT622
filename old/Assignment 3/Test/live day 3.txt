@@ -1,0 +1,27 @@
+03-39-00:Logins:1
+08-47-19:Logins:1
+06-41-21:Logins:1
+19-44-58:Time online:166.27
+23-20-25:Emails sent:1
+00-55-59:Emails sent:1
+00-19-09:Emails sent:1
+15-19-43:Emails sent:1
+20-18-06:Emails opened:1
+07-43-22:Emails opened:1
+13-53-42:Emails opened:1
+10-11-11:Emails opened:1
+10-44-06:Emails opened:1
+17-49-56:Emails opened:1
+10-27-26:Emails opened:1
+22-21-11:Emails opened:1
+00-15-37:Emails opened:1
+05-34-02:Emails opened:1
+16-03-21:Emails deteled:1
+22-27-30:Emails deteled:1
+19-39-41:Emails deteled:1
+12-11-31:Emails deteled:1
+10-20-23:Emails deteled:1
+06-34-30:Emails deteled:1
+13-36-28:Emails deteled:1
+06-27-52:Emails deteled:1
+07-50-58:Emails deteled:1

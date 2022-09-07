@@ -1,0 +1,6 @@
+5
+Logins:4:1.5:
+Time online:100.25:35.00:
+Emails sent:30:10:
+Download volume:150400:20000:
+Money made:10000:7000:

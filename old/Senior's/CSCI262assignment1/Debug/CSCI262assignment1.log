@@ -1,0 +1,20 @@
+﻿  filesystem.cpp
+C:\Users\BXTCL\Desktop\School work\CSCI261 - System Security\CSCI262assignment1\filesystem.cpp(55,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\BXTCL\Desktop\School work\CSCI261 - System Security\CSCI262assignment1\filesystem.cpp(79,10): warning C4018: '<': signed/unsigned mismatch
+C:\Users\BXTCL\Desktop\School work\CSCI261 - System Security\CSCI262assignment1\filesystem.cpp(105,10): warning C4018: '<': signed/unsigned mismatch
+C:\Users\BXTCL\Desktop\School work\CSCI261 - System Security\CSCI262assignment1\filesystem.cpp(131,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\BXTCL\Desktop\School work\CSCI261 - System Security\CSCI262assignment1\filesystem.cpp(159,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\BXTCL\Desktop\School work\CSCI261 - System Security\CSCI262assignment1\filesystem.cpp(171,11): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+C:\Users\BXTCL\Desktop\School work\CSCI261 - System Security\CSCI262assignment1\main.cpp(33,14): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  md5.cpp
+C:\Users\BXTCL\Desktop\School work\CSCI261 - System Security\CSCI262assignment1\md5.cpp(342,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  mysmalllib.cpp
+C:\Users\BXTCL\Desktop\School work\CSCI261 - System Security\CSCI262assignment1\mysmalllib.cpp(61,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\BXTCL\Desktop\School work\CSCI261 - System Security\CSCI262assignment1\mysmalllib.cpp(79,21): warning C4018: '<': signed/unsigned mismatch
+  user.cpp
+C:\Users\BXTCL\Desktop\School work\CSCI261 - System Security\CSCI262assignment1\user.cpp(105,26): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  stdafx.cpp
+  Generating Code...
+C:\Users\BXTCL\Desktop\School work\CSCI261 - System Security\CSCI262assignment1\main.cpp(79): warning C4715: 'exit': not all control paths return a value
+  CSCI262assignment1.vcxproj -> C:\Users\BXTCL\Desktop\School work\CSCI261 - System Security\Debug\CSCI262assignment1.exe

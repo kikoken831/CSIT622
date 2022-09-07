@@ -1,0 +1,6 @@
+5
+Logins:D:0:::2:
+Time online:C:0:1440:minutes:3:
+Emails sent:D:0:::1:
+Download volume:E:0::bits:1:
+Money made:E:::cents:2:
