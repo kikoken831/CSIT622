@@ -9,7 +9,7 @@ pw_list_len = 0
 def read_In_Wordlist():
     global pw_list_len
     # Read in Wordlist.txt
-    wordlist = open("./Wordlist.txt")
+    wordlist = open("./tutorial.txt")
     pw_list = []
     for line in wordlist:
         # Remove newline from file

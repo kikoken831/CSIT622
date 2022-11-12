@@ -30,6 +30,7 @@ def hashChain(wordList):
     global rainbow_table
     # loop through the list
     for word in wordList:
+        hashList = []
         if(word[1] == False):
             # set the word to used
             word[1] = True
@@ -99,13 +100,11 @@ def reducePassword(password):
     return password
 
 # function that searches the rainbow table for a hash
-def search(userInput):
+def searchRainbowTable(userInput):
     # loop through the rainbow table
     for line in rainbow_table:
         # if the hash is found
         if(line[0] == userInput):
-            # print the password
-            print("Password is: ", line[1])
             return line[1]
     # if the hash is not found
     return False
@@ -114,7 +113,6 @@ def search(userInput):
 def loadRainbowTable():
     global rainbow_table
     print("Loading rainbow table")
-    print(len(rainbow_table))
     # open the file
     file = open("./Rainbow.txt", "r")
     # read the file
@@ -135,7 +133,7 @@ def loadRainbowTable():
 
 def main():
     # print the command line arguments
-    print("File to be read on system: ", sys.argv[1])
+    # print("File to be read on system: ", sys.argv[1])
     # read in the file
     wordList = readInFile()
     hashChain(wordList)
@@ -144,11 +142,42 @@ def main():
     # load the rainbow table
     loadRainbowTable()
     # prompt user to enter a hash
-    print("Enter a hash")
     # get the user input
-    userInput = input()
-    userInput = "6e1ba55b046f7d62bbd6dc33b63d5ec7"
 
+    userInput = input("Please enter a hash value: ")
+    userInput = hashPassword(userInput)
+    for i in range(len(rainbow_table)):
+        if rainbow_table[i][0] == userInput:
+             for i in range(4):
+                word = reducePassword(rainbow_table[i][0])
+                word = wordList[word-1][0]
+                if hashPassword(word) == userInput:
+                    print(word)
+                    exit()
+
+    #hash is not in whole rainbow table
+    for i in range(1000):
+        newCandidate = reducePassword(userInput)
+        newCandidate = wordList[newCandidate-1][0]
+        for i in range(len(rainbow_table)):
+            if rainbow_table[i][0] == newCandidate:
+                for i in range(4):
+                    word = reducePassword(rainbow_table[i][0])
+                    word = wordList[word-1][0]
+                    if hashPassword(word) == userInput:
+                        print(word)
+                        exit()
+        userInput = hashPassword(newCandidate)
+
+    print("No hash match could be found")
+
+
+#function to find a reduced hash that is found in the rainbow table
+def searchRainbowTable(hash):
+    for line in rainbow_table:
+        if hash == line[0]:
+            return (True, line)
+    return (False, None)
 
 
 
