@@ -1,5 +1,4 @@
 package Implementation;
-
 public class Stats {
     String eventName;
     double mean;
@@ -37,7 +36,7 @@ public class Stats {
 
     @Override
     public String toString() {
-        return "Stats{" +
+        return "Ship.Stats{" +
                 "eventName='" + eventName + '\'' +
                 ", mean=" + mean +
                 ", standardDeviation=" + standardDeviation +

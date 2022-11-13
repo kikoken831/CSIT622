@@ -7,7 +7,7 @@ class Event {
     char eventType;
     double eventMin;
     double eventMax;
-    double eventWeight;
+    int eventWeight;
 
     Stats stats;
 
@@ -47,7 +47,7 @@ class Event {
         return eventWeight;
     }
 
-    public void setEventWeight(double eventWeight) {
+    public void setEventWeight(int eventWeight) {
         this.eventWeight = eventWeight;
     }
 
@@ -58,7 +58,7 @@ class Event {
         this.stats = stats;
     }
 
-    public Event(String eventName, char eventType, double eventMin, double eventMax, double eventWeight) {
+    public Event(String eventName, char eventType, double eventMin, double eventMax, int eventWeight) {
         this.eventName = eventName;
         this.eventType = eventType;
         this.eventMin = eventMin;
@@ -80,9 +80,7 @@ class Event {
     }
 
     public boolean validateEvent() {
-        if(this.eventMax > 1440){
-            return false;
-        }
+
         if (this.eventType == 'C') {
             if (this.eventMin < 0 || this.eventMax < 0 || this.eventWeight < 0) {
                 return false;
@@ -90,6 +88,9 @@ class Event {
                 return false;
             }
         } else if (this.eventType == 'D') {
+            if(this.eventMax > 1440){
+                return false;
+            }
             if(intChecker(this.eventMin) == false
                     || intChecker(this.eventMax) == false || intChecker(this.eventWeight) == false){
                 return false;

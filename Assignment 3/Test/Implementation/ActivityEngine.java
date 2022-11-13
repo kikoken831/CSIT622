@@ -70,4 +70,36 @@ public class ActivityEngine {
 
         }
     }
+
+    public void generateLogs(String customFileName) {
+        for (int i = 0; i < this.days; i++) {
+            List<String> eventLog = new ArrayList<>();
+            for (int j = 0; j < this.events.length; j++) {
+                if (this.events[j].getEventType() == 'C') {
+                    double value = this.events[j].getValueWithinDistribution();
+                    eventLog.add(generateActivityTimestamp() + ":"
+                            + this.events[j].getEventName() + ":"
+                            + String.format("%.2f", value));
+                } else if (this.events[j].getEventType() == 'D') {
+                    int events = (int) this.events[j].getValueWithinDistribution();
+                    //create k amount of discrete events
+                    for (int k = 0; k < events; k++) {
+                        eventLog.add(generateActivityTimestamp() + ":" + this.events[j].getEventName() + ":" + 1);
+                    }
+                }
+            }
+            //sort the event log
+            Collections.sort(eventLog);
+            //write each line to file
+            try {
+                PrintWriter output = new PrintWriter(customFileName + i + ".txt");
+                for (String line : eventLog)
+                    output.println(line);
+                output.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
 }

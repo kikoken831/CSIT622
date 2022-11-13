@@ -19,7 +19,7 @@ public class IDS {
             baseDays = Integer.parseInt(days);
         } catch (Exception e) {
             System.out.println("Error in input parameters.");
-            System.out.println("Parameters are as such: IDS Events.txt Stats.txt Days");
+            System.out.println("Parameters are as such: IDS Events.txt Ship.Stats.txt Days");
             System.exit(-1);
         }
         initialEvents = ReadEventTypesFile(eventsFilePath);
@@ -53,12 +53,47 @@ public class IDS {
         System.out.println("Activity Engine created.");
         activityEngine.generateLogs();
         System.out.println("Activity Engine finished.");
-        System.out.println("Analysis Engine created.");
         AnalysisEngine analysisEngine = new AnalysisEngine(baseDays, initialEvents);
         System.out.println("==================Analysis Engine Report===================");
         analysisEngine.generateAllStats();
         analysisEngine.computeTotalStats();
         System.out.println("Analysis Engine finished.");
+        System.out.println("Begin Alert Engine.");
+
+        while (true) {
+            System.out.println("Enter 'q' to quit or Enter <List Ship.Stats File path> <No of days> (i.e Ship.Stats.txt 5): ");
+            Scanner input = new Scanner(System.in);
+            String line = input.nextLine();
+            if (line.equals("q") || line.equals("Q"))
+                break;
+            String parts[] = line.split(" ");
+            if (parts.length == 2) {
+                int newDays = Integer.parseInt(parts[1]);
+                Stats[] testStats = ReadEventStatsFile(parts[0]);
+                for (Event e : initialEvents
+                ) {
+                    for (Stats s : testStats
+                    ) {
+                        if (e.getEventName().equals(s.getEventName())) {
+                            e.setStats(s);
+                        }
+                    }
+                }
+                ActivityEngine liveActivityEngine = new ActivityEngine(newDays, initialEvents);
+                System.out.println("Generating Events ...");
+                liveActivityEngine.generateLogs("LiveActivityLog");
+                AnalysisEngine liveAnalysisEngine = new AnalysisEngine(newDays, initialEvents);
+                System.out.println("==================Live Analysis Engine Report===================");
+                liveAnalysisEngine.generateAllStats("LiveActivityLog");
+                AlertEngine alertEngine = new AlertEngine(initialEvents,baseDays);
+                alertEngine.generateAlerts();
+                System.out.println("Done");
+
+            } else {
+                System.out.println("Invalid input try again.");
+            }
+        }
+
     }
 
     //file reader for events.txt
@@ -74,7 +109,7 @@ public class IDS {
             String type = part[1];
             double minVal = 0;
             double maxVal = 0;
-            double weightVal = 0;
+            int weightVal = 0;
             String min = part[2];
             if (!min.equals(""))
                 minVal = Double.parseDouble(min);
@@ -83,7 +118,7 @@ public class IDS {
                 maxVal = Double.parseDouble(max);
             String weight = part[4];
             if (!weight.equals(""))
-                weightVal = Double.parseDouble(weight);
+                weightVal = Integer.parseInt(weight);
             // make a new event object
             eventTypes[i] = new Event(name, type.charAt(0), minVal, maxVal, weightVal);
         }
