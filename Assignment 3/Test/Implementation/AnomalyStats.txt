@@ -1,6 +1,0 @@
-5
-Logins:6:3.5:
-Time online:175:45.00:
-Emails sent:20:8:
-Emails opened:22:4.5:
-Emails deleted:16:5.3:
